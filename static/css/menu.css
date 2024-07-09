@@ -1,0 +1,52 @@
+form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+    color: yellow;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 5px
+}
+
+h3 {
+    color: rgba(255, 255, 255, 0.425);
+}
+span {
+    color: #ffffff;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    display: none;
+}
+
+input[type="radio"]:checked + span {
+    font-size:110%;
+    color: lawngreen;
+}
+
+input[type="radio"]:hover + span {
+    font-size:110%;
+}
+
+#sub {
+    
+    background-color: #0a4d95;
+    color: #ffffff;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#sub:hover {
+    background-color: #083968;
+}
