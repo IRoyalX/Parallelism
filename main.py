@@ -17,7 +17,7 @@ async def index(exercies_tag: str = None):
         return RedirectResponse(f"/{exercies_tag}", status_code=303)
 
 @app.get("/s1e1")
-async def Exercise_S1_E1(request: Request, scenario: int = None, n_threads: int = 10, Json: int = 0):
+async def Exercise_S1_E2(request: Request, scenario: int = None, n_threads: int = 10, Json: int = 0):
     output = "There is nothing to show !!!"
     if scenario != None:
         result = subprocess.run(['python', 'codes/s1e1.py', str(scenario), str(n_threads)], capture_output=True, text=True)
