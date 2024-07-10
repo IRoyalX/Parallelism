@@ -28,7 +28,7 @@ async def Exercise_S1_E1(request: Request, scenario: int = None, n_threads: int 
     return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "threads", "type_value": n_threads, "output": output, "img": "s1e1.png"})
 
 @app.get("/s1e2")
-async def Exercise_S1_E1(request: Request, scenario: int = None, n_threads: int = 3, Json: int = 0):
+async def Exercise_S1_E2(request: Request, scenario: int = None, n_threads: int = 3, Json: int = 0):
     output = "There is nothing to show !!!"
     if scenario != None:
         result = subprocess.run(['python', 'codes/s1e2.py', str(scenario), str(n_threads)], capture_output=True, text=True)
