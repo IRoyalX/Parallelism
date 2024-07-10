@@ -1,21 +1,37 @@
 FROM python:3.9-slim
 # ----------------------------------------
-FROM nvidia/cuda:11.4.1-devel-ubuntu20.04
+# Install necessary dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        curl \
+        gnupg \
+        lsb-release \
+    && rm -rf /var/lib/apt/lists/*
 
+# Install NVIDIA CUDA
+RUN curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub | apt-key add - && \
+    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        cuda-cudart-11-4 \
+        cuda-compat-11-4 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set environment variables
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
+# Install additional dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        python3 \
-        python3-pip \
         build-essential \
-        cuda-command-line-tools-11-4 \
-        cuda-libraries-dev-11-4 \
         libcudnn8=8.2.4.15-1+cuda11.4 \
-        libcudnn8-dev=8.2.4.15-1+cuda11.4
+        libcudnn8-dev=8.2.4.15-1+cuda11.4 \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install pycuda, numpy
+# Install PyCUDA
+RUN pip install numpy==1.22.0  # Adjust NumPy version as needed
+RUN pip install pycuda
 # ----------------------------------------
 WORKDIR /
 COPY . /
