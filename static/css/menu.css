@@ -9,7 +9,7 @@ form {
 label {
     font-weight: bold;
     font-size: 14px;
-    color: yellow;
+    color: #75a7dd;
     text-align: left;
     cursor: pointer;
     margin-bottom: 5px
@@ -29,7 +29,7 @@ input[type="radio"] {
 
 input[type="radio"]:checked + span {
     font-size:110%;
-    color: lawngreen;
+    color: rgb(96, 167, 224);
 }
 
 input[type="radio"]:hover + span {
@@ -38,7 +38,7 @@ input[type="radio"]:hover + span {
 
 #sub {
     
-    background-color: #0a4d95;
+    background-color: #1b6abe;
     color: #ffffff;
     padding: 10px 50px;
     border: none;

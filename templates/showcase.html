@@ -20,29 +20,31 @@
             <div>
                 <label>Input:</label><br>
                 <div class="box">
-                    <div>
-                        <label>Select a Scenario:</label><br>
-                        <div class="items">
-                            <label><input type="radio" name="scenario" value="1" {% if scenario == 1 %}checked{% endif %} checked>1</label>
-                            <label><input type="radio" name="scenario" value="2" {% if scenario == 2 %}checked{% endif %}>2</label>
-                            <label><input type="radio" name="scenario" value="3" {% if scenario == 3 %}checked{% endif %}>3</label>
+                    <div class="options">
+                        <div>
+                            <label>Select a Scenario:</label><br>
+                            <div class="items">
+                                <label><input type="radio" name="scenario" value="1" {% if scenario == 1 %}checked{% endif %} checked>1</label>
+                                <label><input type="radio" name="scenario" value="2" {% if scenario == 2 %}checked{% endif %}>2</label>
+                                <label><input type="radio" name="scenario" value="3" {% if scenario == 3 %}checked{% endif %}>3</label>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        {% if type_name != "" %}
-                        <label>Number of {{type_name}}: </label><br>
-                        <div class="items">
-                            <input type="number" name="{{type_name}}" min="2" max="35" value="{{type_value}}" disabled>
+                        <div>
+                            {% if type_name != "" %}
+                            <label>Number of {{type_name}}: </label><br>
+                            <div class="items">
+                                <input type="number" name="{{type_name}}" min="2" max="35" value="{{type_value}}" disabled>
+                            </div>
+                            {% endif %}
                         </div>
-                        {% endif %}
-                    </div>
-                    <div>
-                        <button type="submit" id="sub">SHOW RESULT</button>
-                        <button type="submit" id="sub" name="Json" value="1">SHOW JSON</button>
                     </div>
                 </div>
+                <div class="options_button">
+                    <button type="submit" id="sub" name="Json" value="1">SHOW JSON</button>
+                    <button type="submit" id="sub">SHOW RESULT</button>
+                </div>
             </div>
-            <div>
+            <div> 
                 <label >Output:</label><br>
                 <div class="box">
                     <pre>{{output}}</pre>
