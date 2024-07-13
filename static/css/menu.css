@@ -37,7 +37,7 @@ input[type="radio"]:hover + span {
 }
 
 #sub {
-    
+    text-decoration: none;
     background-color: #1b6abe;
     color: #ffffff;
     padding: 10px 50px;
@@ -49,4 +49,15 @@ input[type="radio"]:hover + span {
 
 #sub:hover {
     background-color: #083968;
+}
+
+.buttons {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    size: 10px 20px;
+}
+
+.rep {
+    margin-left: 750px;
 }

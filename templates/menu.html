@@ -8,42 +8,47 @@
     <link rel="stylesheet" type="text/css" href="../static/css/menu.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Select the desired exercise:</h1>
-        <form method="get">
-            <div>
-                <h3>S1 - Thread-Based Parallelism</h3>
-                <label><input type="radio" name="exercies_tag" value="s1e1" checked>E1.<span>Defining a thread</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s1e2">E2.<span>Determining the current thread</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s1e3">E3.<span>Defining a thread subclass</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s1e4">E4.<span>Thread synchronization with a lock</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s1e5">E5.<span>Thread synchronization with RLock</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s1e6">E6.<span>Thread synchronization with semaphores</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s1e7">E7.<span>Thread synchronization with a barrier</span></label><br>
+        <div class="container">
+            <h1>Select the desired exercise:</h1>
+            <form method="get">
+                <div>
+                    <h3>S1 - Thread-Based Parallelism</h3>
+                    <label><input type="radio" name="exercies_tag" value="s1e1" checked>E1.<span>Defining a thread</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s1e2">E2.<span>Determining the current thread</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s1e3">E3.<span>Defining a thread subclass</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s1e4">E4.<span>Thread synchronization with a lock</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s1e5">E5.<span>Thread synchronization with RLock</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s1e6">E6.<span>Thread synchronization with semaphores</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s1e7">E7.<span>Thread synchronization with a barrier</span></label><br>
+                </div>
+                <div>
+                    <h3>S2 - Process-Based Parallelism</h3>
+                    <label><input type="radio" name="exercies_tag" value="s2e1">E1.<span>Spawning a process</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s2e2">E2.<span>Naming a process</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s2e3">E3.<span>Running processes in the background</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s2e4">E4.<span>Killing a process</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s2e5">E5.<span>Defining processes in a subclass</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s2e6">E6.<span>Using a queue to exchange data</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s2e7">E7.<span>Synchronizing processes</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s2e8">E8.<span>Using a process pool</span></label><br>
+                </div>
+                <div>
+                    <h3>S3 - Heterogeneous Computing</h3>
+                    <label><input type="radio" name="exercies_tag" value="s3e1">E1.<span>Run the code to reach output</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s3e2">E2.<span>Write the parallel code Heterogeneous (P257)</span></label><br>
+                    <label><input type="radio" name="exercies_tag" value="s3e3">E3.<span>Write the parallel matrix product code (P263)</span></label><br>
+                </div>
+                <div></div>
+                <div>
+                    <button type="submit" id="sub">Go</button>
+                </div>
+                <div></div>
+            </form>
+            <div class="buttons">
+                <a href="/docs" class="doc" id="sub">Docs</a>
+                <a href="/redoc" class="doc" id="sub">ReDoc</a>
+                <a href="/report" class="rep" id="sub">Report</a>
             </div>
-            <div>
-                <h3>S2 - Process-Based Parallelism</h3>
-                <label><input type="radio" name="exercies_tag" value="s2e1">E1.<span>Spawning a process</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s2e2">E2.<span>Naming a process</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s2e3">E3.<span>Running processes in the background</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s2e4">E4.<span>Killing a process</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s2e5">E5.<span>Defining processes in a subclass</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s2e6">E6.<span>Using a queue to exchange data</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s2e7">E7.<span>Synchronizing processes</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s2e8">E8.<span>Using a process pool</span></label><br>
-            </div>
-            <div>
-                <h3>S3 - Heterogeneous Computing</h3>
-                <label><input type="radio" name="exercies_tag" value="s3e1">E1.<span>Run the code to reach output</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s3e2">E2.<span>Write the parallel code Heterogeneous (P257)</span></label><br>
-                <label><input type="radio" name="exercies_tag" value="s3e3">E3.<span>Write the parallel matrix product code (P263)</span></label><br>
-            </div>
-            <div></div>
-            <div>
-                <button type="submit" id="sub">Go</button>
-            </div>
-            <div></div>
-        </form>
-    </div>   
+        </div> 
 </body>
 </html>

@@ -1,5 +1,5 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import FileResponse, RedirectResponse
+from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import FileResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import subprocess, json
@@ -7,6 +7,16 @@ import subprocess, json
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+
+@app.exception_handler(404)
+async def custom_404_handler(request: Request, exc: HTTPException):
+    if "application/json" in request.headers.get("accept", ""):
+        return JSONResponse(status_code=404, content={"message": "Oops! The resource you are looking for is not found."},)
+    return templates.TemplateResponse("404.html", {"request": request}, status_code=404)
+
+@app.get("/report")
+async def Repoert():
+    return FileResponse("Parallelism_Report.pdf", media_type="application/pdf")
 
 @app.get("/")
 async def index(exercies_tag: str = None):
