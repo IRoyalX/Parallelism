@@ -2,8 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-import subprocess
-import json
+import subprocess, json
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -32,7 +31,7 @@ async def Exercise_S1_E2(request: Request, scenario: int = None, n_threads: int 
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "threads", "type_value": n_threads, "output": output, "img": "s1e1.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "threads", "type_value": n_threads, "output": output, "img": "s1e1.png", "description": description[scenario - 1] if scenario else "", "s": 1, "e": 1})
 
 @app.get("/s1e2")
 async def Exercise_S1_E2(request: Request, scenario: int = None, Json: int = 0):
@@ -49,7 +48,7 @@ async def Exercise_S1_E2(request: Request, scenario: int = None, Json: int = 0):
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s1e2.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s1e2.png", "description": description[scenario - 1] if scenario else "", "s": 1, "e": 2})
 
 @app.get("/s1e3")
 async def Exercise_S1_E3(request: Request, scenario: int = None, n_threads: int = 10, Json: int = 0):
@@ -66,7 +65,7 @@ async def Exercise_S1_E3(request: Request, scenario: int = None, n_threads: int 
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "threads", "type_value": n_threads, "output": output, "img": "s1e3.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "threads", "type_value": n_threads, "output": output, "img": "s1e3.png", "description": description[scenario - 1] if scenario else "", "s": 1, "e": 3})
 
 @app.get("/s1e4")
 async def Exercise_S1_E4(request: Request, scenario: int = None, n_threads: int = 10, Json: int = 0):
@@ -83,7 +82,7 @@ async def Exercise_S1_E4(request: Request, scenario: int = None, n_threads: int 
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "threads", "type_value": n_threads, "output": output, "img": "s1e4.png"})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "threads", "type_value": n_threads, "output": output, "img": "s1e4.png", "description": description[scenario - 1] if scenario else "", "s": 1, "e": 4})
 
 
 @app.get("/s1e5")
@@ -101,7 +100,7 @@ async def Exercise_S1_E5(request: Request, scenario: int = None, Json: int = 0):
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s1e5.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s1e5.png", "description": description[scenario - 1] if scenario else "", "s": 1, "e": 5})
 
 
 @app.get("/s1e6")
@@ -119,7 +118,7 @@ async def Exercise_S1_E6(request: Request, scenario: int = None, n_threads: int 
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "threads", "type_value": n_threads, "output": output, "img": "s1e6.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "threads", "type_value": n_threads, "output": output, "img": "s1e6.png", "description": description[scenario - 1] if scenario else "", "s": 1, "e": 6})
 
 
 @app.get("/s1e7")
@@ -137,7 +136,7 @@ async def Exercise_S1_E7(request: Request, scenario: int = None, Json: int = 0):
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s1e7.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s1e7.png", "description": description[scenario - 1] if scenario else "", "s": 1, "e": 7})
 
 @app.get("/s2e1")
 async def Exercise_S2_E1(request: Request, scenario: int = None, n_process: int = 5, Json: int = 0):
@@ -149,12 +148,12 @@ async def Exercise_S2_E1(request: Request, scenario: int = None, n_process: int 
         
         description = [
                         "در این سناریو شماره هر پراسس به تابع فراخوانی کننده اش ارسال و یک حلقه داخل تابع از صفر تا شماره پراسس چاپ می کند و دستور Join تضمین کننده اجرای ترتیبی است",
-                        "در این سناریو به دلیل عدم وجود join تمامی پراسس ها همزمان اجرا شده پیام وذود را چاپ و 0.2 ثانیه انتظار می کشند سپس حلقه تکرار خود را اجرا میکنند که ترتیب اجرایی نخواهیم داشت",
+                        "در این سناریو به دلیل عدم وجود join تمامی پراسس ها همزمان اجرا شده پیام ورود را چاپ و 0.2 ثانیه انتظار می کشند سپس حلقه تکرار خود را اجرا میکنند که ترتیب اجرایی نخواهیم داشت",
                         "جهت برطرف سازی ضعف ایجاد شده در سناریو قبل می توان از سمافور بهره گرفت اما باید توجه داشت که سمافور به عنوان پارامتر به هر پراسس ارسال شود و حلقه را به عنوان ناحیه بحرانی در نظر گرفت تا چاپ های هر پراسس با دیگری ادغام نشود.",
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "processes", "type_value": n_process, "output": output, "img": "s2e1.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "processes", "type_value": n_process, "output": output, "img": "s2e1.png", "description": description[scenario - 1] if scenario else "", "s": 2, "e": 1})
 
 @app.get("/s2e2")
 async def Exercise_S2_E2(request: Request, scenario: int = None, Json: int = 0):
@@ -171,7 +170,7 @@ async def Exercise_S2_E2(request: Request, scenario: int = None, Json: int = 0):
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s2e2.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s2e2.png", "description": description[scenario - 1] if scenario else "", "s": 2, "e": 2})
 
 @app.get("/s2e3")
 async def Exercise_S2_E3(request: Request, scenario: int = None, Json: int = 0):
@@ -188,7 +187,7 @@ async def Exercise_S2_E3(request: Request, scenario: int = None, Json: int = 0):
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s2e3.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s2e3.png", "description": description[scenario - 1] if scenario else "", "s": 2, "e": 3})
 
 @app.get("/s2e4")
 async def Exercise_S2_E4(request: Request, scenario: int = None, Json: int = 0):
@@ -205,7 +204,7 @@ async def Exercise_S2_E4(request: Request, scenario: int = None, Json: int = 0):
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s2e4.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s2e4.png", "description": description[scenario - 1] if scenario else "", "s": 2, "e": 4})
 
 @app.get("/s2e5")
 async def Exercise_S2_E5(request: Request, scenario: int = None, n_process: int = 10, Json: int = 0):
@@ -222,7 +221,7 @@ async def Exercise_S2_E5(request: Request, scenario: int = None, n_process: int 
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "processes", "type_value": n_process, "output": output, "img": "s2e5.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "processes", "type_value": n_process, "output": output, "img": "s2e5.png", "description": description[scenario - 1] if scenario else "", "s": 2, "e": 5})
 
 @app.get("/s2e6")
 async def Exercise_S2_E6(request: Request, scenario: int = None, n_products: int = 5, Json: int = 0):
@@ -239,7 +238,7 @@ async def Exercise_S2_E6(request: Request, scenario: int = None, n_products: int
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "products", "type_value": n_products, "output": output, "img": "s2e6.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "products", "type_value": n_products, "output": output, "img": "s2e6.png", "description": description[scenario - 1] if scenario else "", "s": 2, "e": 6})
 
 @app.get("/s2e7")
 async def Exercise_S2_E7(request: Request, scenario: int = None, Json: int = 0):
@@ -256,7 +255,7 @@ async def Exercise_S2_E7(request: Request, scenario: int = None, Json: int = 0):
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s2e7.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "", "output": output, "img": "s2e7.png", "description": description[scenario - 1] if scenario else "", "s": 2, "e": 7})
 
 @app.get("/s2e8")
 async def Exercise_S2_E8(request: Request, scenario: int = None, n_inputs: int = 10, Json: int = 0):
@@ -273,7 +272,7 @@ async def Exercise_S2_E8(request: Request, scenario: int = None, n_inputs: int =
                     ]
     if Json:
         return result
-    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "products", "type_value": n_inputs, "output": output, "img": "s2e8.png", "description": description[scenario - 1] if scenario else ""})
+    return templates.TemplateResponse("showcase.html",{"request": request, "scenario": scenario, "type_name": "products", "type_value": n_inputs, "output": output, "img": "s2e8.png", "description": description[scenario - 1] if scenario else "", "s": 2, "e": 8})
 
 @app.get("/s3e1")
 async def Exercise_S3_E1():
