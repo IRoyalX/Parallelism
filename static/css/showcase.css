@@ -54,16 +54,21 @@ img {
 }
 
 #sub {
-    
+    display: inline-block;
     background-color: #0a4d95;
     color: #ffffff;
-    padding: 10px 50px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;   
 }
 
 #sub:hover {
     background-color: #083968;
+}
+
+.back {
+    text-decoration: none;
+    justify-self:left;
 }
