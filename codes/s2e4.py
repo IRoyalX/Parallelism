@@ -28,5 +28,6 @@ if __name__ == "__main__":
 
     output.put(f"Process exit code: {p.exitcode}")
 
+    time.sleep(1)
     while not output.empty():
         print(output.get())
