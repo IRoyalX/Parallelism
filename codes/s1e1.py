@@ -2,8 +2,6 @@ from threading import Thread as T
 import time
 import sys
 
-scenario = 1
-
 def func(num: int = 10)-> str:
     if scenario == 3:
         time.sleep(0.2 * num)

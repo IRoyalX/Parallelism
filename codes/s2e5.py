@@ -12,7 +12,8 @@ if __name__ == "__main__":
     for i in range(n_process):
         process = MyClass()
         process.start()
-        if scenario != 2:
+        if scenario == 1:
             process.join()
         elif scenario == 3 and i%2 == 0:
             process.join()
+            

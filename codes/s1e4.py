@@ -8,12 +8,15 @@ class SubClass(T):
         self.duration = duration
 
     def run(self):
-        with Lock:
-            if scenario == 3:
-                Lock.release()
+        if scenario == 3:
             print (f"{self.name} running, process ID {str(os.getpid())}")
             time.sleep(self.duration)
             print (f"{self.name} over")
+        else:  
+            with Lock:
+                print (f"{self.name} running, process ID {str(os.getpid())}")
+                time.sleep(self.duration)
+                print (f"{self.name} over")
 
 if __name__ == "__main__":
     scenario = int(sys.argv[1])
@@ -27,7 +30,7 @@ if __name__ == "__main__":
         if scenario != 2:
             duration = 0.5
         elif scenario == 2:
-            duration = 0.001
+            duration = 0
         thread = SubClass(f"Thread {i}", duration)
         threads.append(thread)
         thread.start()

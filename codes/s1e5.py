@@ -1,6 +1,6 @@
 import time, sys, random, threading
 
-class execution:
+class execution():
     def __init__(self):
         self.rlock = threading.RLock()
         self.total_items = 0
@@ -43,4 +43,6 @@ if __name__ == "__main__":
     adder_thread = threading.Thread(target=adder, args=(exec, random.randint(10,15)))
     remover_thread = threading.Thread(target=remover, args=(exec, random.randint(5,10)))
     adder_thread.start()
+    if scenario == 3:
+        adder_thread.join()
     remover_thread.start()

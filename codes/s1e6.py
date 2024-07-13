@@ -9,7 +9,7 @@ def consumer():
 
 def producer():
  global item
- if scenario != 2 and scenario != 3:
+ if scenario == 1:
     time.sleep(0.2)
  item = random.randint(0, 1000)
  print(f"Producer notify: item number {item}")

@@ -30,7 +30,6 @@ def FC():
 
 if __name__ == "__main__":
     scenario = int(sys.argv[1])
-    n_threads = int(sys.argv[2])
 
     A = T(target=FA, name= "A")
     B = T(target=FB, name= "B")

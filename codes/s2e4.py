@@ -3,7 +3,7 @@ import time, sys
 
 def func():
     print ("Starting function\n")
-    for i in range(0,5):
+    for i in range(10):
         print(f"--> {i}\n")
         time.sleep(0.2)
     print ("Finished function")

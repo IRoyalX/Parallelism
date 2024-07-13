@@ -19,5 +19,3 @@ if __name__ == "__main__":
     if scenario == 2:
         process_with_name.join()
     process_with_default_name.start()
-    process_with_name.join()
-    process_with_default_name.join()
