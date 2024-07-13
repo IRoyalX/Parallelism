@@ -1,0 +1,34 @@
+.container {
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 6em;
+    color: #ffffff;
+    margin: 0;
+}
+
+p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+#sub {
+    display: inline-block;
+    background-color: #1b6abe;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;   
+}
+
+#sub:hover {
+    background-color: #083968;
+}
+
+.back {
+    text-decoration: none;
+    justify-self:left;
+}
