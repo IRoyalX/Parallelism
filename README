@@ -11,4 +11,3 @@ Docker Installation:
 3) docker build -t parallelism .
 4) docker run -d -p 80:80 parallelism
 #---------------------------------------------------------------------------------------------------------------------
-version 1
